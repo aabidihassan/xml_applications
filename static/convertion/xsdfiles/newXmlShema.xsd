@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <element name='RegistreEmploye'>
+        <complexType>
+            <sequence>
+                <element name="Employe" type="EmployeType" minOccurs="1" maxOccurs="unbounded"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="EmployeType">
+        <all>
+            <element name="nom" type="string"></element>
+            <element name="position" type="string"></element>
+            <element name="salaire">
+                <simpleType>
+                    <restriction base="decimal">
+                        <fractionDigits value="2"/>
+                        <minExclusive value="0"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </all>
+    </complexType>
+
+</schema>

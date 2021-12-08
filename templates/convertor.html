@@ -103,7 +103,7 @@
                 processData: false,
                 success: function (data) {
                     if(data.result){
-                        $('#sqlDownload').prop("href", "{{ url_for('static',filename='sql/result.sql') }}")
+                        $('#sqlDownload').prop("href", "{{ url_for('static',filename='convertion/sql/result.sql') }}")
                         $('#text-p').text('File succesfily converte');
                         $('#sqlDownload').show();
                         $('#myModal').modal('show');

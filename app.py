@@ -31,8 +31,8 @@ def convertor():
     else :
         try:
             xsdFile = request.files['xsdFile']
-            xsdFile.save(os.path.join("static\\xsdfiles", "xsdFile.xsd"))
-            if conv("static\\xsdfiles\\xsdFile.xsd"):
+            xsdFile.save(os.path.join("static/convertion/xsdfiles", "xsdFile.xsd"))
+            if conv("static\\convertion\\xsdfiles\\xsdFile.xsd"):
                 return jsonify(result = True)
             else:
                 return jsonify(result = False)
