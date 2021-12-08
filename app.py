@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask.templating import render_template
 from lxml import etree
+import os
 import xmlschema
 from convertor import convertor as conv
 
@@ -30,10 +31,13 @@ def convertor():
     else :
         try:
             xsdFile = request.files['xsdFile']
-            sql = conv(xsdFile)
-            return jsonify(sql = sql)
+            xsdFile.save(os.path.join("static\\xsdfiles", "xsdFile.xsd"))
+            if conv("static\\xsdfiles\\xsdFile.xsd"):
+                return jsonify(result = True)
+            else:
+                return jsonify(result = False)
         except Exception as e:
-            return jsonify(result="invalide")
+            return jsonify(result = False)
 
 
 def externalDtd(xmlFile , dtdFile):

@@ -39,8 +39,8 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto mr-md-3">
-          <li class="nav-item active"><a href="/validator" class="nav-link">XML Validator</a></li>
-          <li class="nav-item"><a href="/convertor" class="nav-link">XML Convertor</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">XML Validator</a></li>
+          <li class="nav-item active"><a href="/convertor" class="nav-link">XML Convertor</a></li>
         </ul>
       </div>
     </div>
@@ -51,7 +51,7 @@
 
       <div class="mb-3">
         <label for="formFile" class="form-label">XSD File</label>
-        <input class="form-control" type="file" id="xsdFile" name="xsdFile" accept=".xsd">
+        <input class="form-control" type="file" id="xsdFile" name="xsdFile" accept=".xsd" required>
       </div>
       <br>
 
@@ -70,7 +70,10 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <p id="text-p"></p>
+              <p id="text-p"></p>
+              <a id="sqlDownload" href="" download>
+                <button class="btn btn-primary btn-block">Download sql File</button>
+              </a>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
@@ -82,7 +85,39 @@
   </div>
 
   <script>
-
+    $(document).ready(function (){
+        $('.close, #close').click(function () {
+            $('#myModal').modal('hide');
+        });
+        $('form').on('submit', function (e){
+            e.preventDefault();
+            var form_data = new FormData();
+            form_data.append('xsdFile', $('#xsdFile')[0].files[0]);
+            $(function () {
+              $.ajax({
+                type: 'POST',
+                url: '/convertor',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    if(data.result){
+                        $('#sqlDownload').prop("href", "{{ url_for('static',filename='sql/result.sql') }}")
+                        $('#text-p').text('File succesfily converte');
+                        $('#sqlDownload').show();
+                        $('#myModal').modal('show');
+                    }
+                    else{
+                        $('#text-p').text('Invalidate File');
+                        $('#sqlDownload').hide();
+                        $('#myModal').modal('show');
+                    }
+                },
+              });
+            });
+        })
+    })
   </script>
 
 </body>
