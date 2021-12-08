@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+                DROP TABLE IF EXISTS Root;<br/>              
+                CREATE TABLE Root(<br/>Root_id INT NOT NULL, <br/>
+                PRIMARY KEY(Root_id ) );
+                <br/><br/>
+                DROP TABLE IF EXISTS Customers;<br/>              
+                CREATE TABLE Customers(<br/>Customers_id INT NOT NULL, <br/>CompanyName VARCHAR2 (*),<br/>ContactName VARCHAR2 (*),<br/>ContactTitle VARCHAR2 (*),<br/>Phone VARCHAR2 (*),<br/>Fax VARCHAR2 (*),<br/>Address VARCHAR2 (*),<br/>City VARCHAR2 (*),<br/>Region VARCHAR2 (*),<br/>PostalCode VARCHAR2 (*),<br/>Country VARCHAR2 (*),<br/>
+                PRIMARY KEY(Customers_id ) );
+                <br/><br/>
+                DROP TABLE IF EXISTS Orders;<br/>              
+                CREATE TABLE Orders(<br/>Orders_id INT NOT NULL, <br/>CustomerID VARCHAR2 (*),<br/>EmployeeID VARCHAR2 (*),<br/>OrderDate DATETIME,<br/>RequiredDate DATETIME,<br/>ShipVia INTEGER (10,0),<br/>Freight DECIMAL(30,15),<br/>ShipName VARCHAR2 (*),<br/>ShipAddress VARCHAR2 (*),<br/>ShipCity VARCHAR2 (*),<br/>ShipRegion VARCHAR2 (*),<br/>ShipPostalCode VARCHAR2 (*),<br/>ShipCountry VARCHAR2 (*),<br/>
+                PRIMARY KEY(Orders_id ) );
+                <br/><br/>
