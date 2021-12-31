@@ -1,0 +1,74 @@
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <element name="Root">
+    <complexType>
+      <sequence>
+        <element name="Customers">
+          <complexType>
+            <sequence>
+              <element name="Customer" type="CustomerType" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Orders">
+          <complexType>
+            <sequence>
+              <element name="Order" type="OrderType" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+    <key name="CustomerIDKey">
+      <selector xpath="Customers/Customer"/>
+      <field xpath="@CustomerID"/>
+    </key>
+    <keyref name="CustomerIDKeyRef" refer="CustomerIDKey">
+      <selector xpath="Orders/Order"/>
+      <field xpath="CustomerID"/>
+    </keyref>
+  </element>
+  <complexType name="CustomerType">
+    <sequence>
+      <element name="CompanyName" type="string"/>
+      <element name="ContactName" type="string"/>
+      <element name="ContactTitle" type="string"/>
+      <element name="Phone" type="string"/>
+      <element name="Fax" minOccurs="0" type="string"/>
+      <element name="FullAddress" type="AddressType"/>
+    </sequence>
+    <attribute name="CustomerID" type="token"/>
+  </complexType>
+  <complexType name="AddressType">
+    <sequence>
+      <element name="Address" type="string"/>
+      <element name="City" type="string"/>
+      <element name="Region" type="string"/>
+      <element name="PostalCode" type="string"/>
+      <element name="Country" type="string"/>
+    </sequence>
+    <attribute name="CustomerID" type="token"/>
+  </complexType>
+  <complexType name="OrderType">
+    <sequence>
+      <element name="CustomerID" type="token"/>
+      <element name="EmployeeID" type="token"/>
+      <element name="OrderDate" type="dateTime"/>
+      <element name="RequiredDate" type="dateTime"/>
+      <element name="ShipInfo" type="ShipInfoType"/>
+    </sequence>
+  </complexType>
+  <complexType name="ShipInfoType">
+    <sequence>
+      <element name="ShipVia" type="integer"/>
+      <element name="Freight" type="decimal"/>
+      <element name="ShipName" type="string"/>
+      <element name="ShipAddress" type="string"/>
+      <element name="ShipCity" type="string"/>
+      <element name="ShipRegion" type="string"/>
+      <element name="ShipPostalCode" type="string"/>
+      <element name="ShipCountry" type="string"/>
+    </sequence>
+    <attribute name="ShippedDate" type="dateTime"/>
+  </complexType>
+<RootElementTag>Root</RootElementTag></schema>
+

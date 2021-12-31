@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root><ddl>
+                DROP TABLE IF EXISTS Customers;<br/>              
+                CREATE TABLE Customers(<br/>Customers_id INT NOT NULL AUTO_INCREMENT, <br/>CompanyName VARCHAR (255),<br/>ContactName VARCHAR (255),<br/>ContactTitle VARCHAR (255),<br/>Phone VARCHAR (255),<br/>Fax VARCHAR (255),<br/>Address VARCHAR (255),<br/>City VARCHAR (255),<br/>Region VARCHAR (255),<br/>PostalCode VARCHAR (255),<br/>Country VARCHAR (255),<br/>
+                PRIMARY KEY(Customers_id ) );
+                <br/><br/>
+                DROP TABLE IF EXISTS Orders;<br/>              
+                CREATE TABLE Orders(<br/>Orders_id INT NOT NULL AUTO_INCREMENT, <br/>CustomerID VARCHAR (255),<br/>EmployeeID VARCHAR (255),<br/>OrderDate DATETIME,<br/>RequiredDate DATETIME,<br/>ShipVia INT(11) NULL,<br/>Freight DECIMAL(30) NULL,<br/>ShipName VARCHAR (255),<br/>ShipAddress VARCHAR (255),<br/>ShipCity VARCHAR (255),<br/>ShipRegion VARCHAR (255),<br/>ShipPostalCode VARCHAR (255),<br/>ShipCountry VARCHAR (255),<br/>
+                PRIMARY KEY(Orders_id ) );
+                <br/><br/></ddl><br/><br/><dml><br/><table name="Customers"><br/><attributes><br/><attribute>CompanyName</attribute><br/><attribute>ContactName</attribute><br/><attribute>ContactTitle</attribute><br/><attribute>Phone</attribute><br/><attribute>Fax</attribute><br/><attribute>Address</attribute><br/><attribute>City</attribute><br/><attribute>Region</attribute><br/><attribute>PostalCode</attribute><br/><attribute>Country</attribute><br/></attributes><br/></table><br/><table name="Orders"><br/><attributes><br/><attribute>CustomerID</attribute><br/><attribute>EmployeeID</attribute><br/><attribute>OrderDate</attribute><br/><attribute>RequiredDate</attribute><br/><attribute>ShipVia</attribute><br/><attribute>Freight</attribute><br/><attribute>ShipName</attribute><br/><attribute>ShipAddress</attribute><br/><attribute>ShipCity</attribute><br/><attribute>ShipRegion</attribute><br/><attribute>ShipPostalCode</attribute><br/><attribute>ShipCountry</attribute><br/></attributes><br/></table><br/></dml></root>

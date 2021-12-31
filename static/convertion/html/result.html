@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-                DROP TABLE IF EXISTS RegistreEmploye;<br/>              
-                CREATE TABLE RegistreEmploye(<br/>RegistreEmploye_id INT NOT NULL, <br/>nom VARCHAR2 (*),<br/>position VARCHAR2 (*),<br/>
-                PRIMARY KEY(RegistreEmploye_id ) );
+                DROP TABLE IF EXISTS root;<br/>              
+                CREATE TABLE root(<br/>root_id INT NOT NULL, <br/>idAdmin VARCHAR2 (*),<br/>idClient VARCHAR2 (*),<br/>idGestionnaire VARCHAR2 (*),<br/>referenceCmd VARCHAR2 (*),<br/>dateCmd DATE,<br/>referenceProd VARCHAR2 (*),<br/>referenceCat VARCHAR2 (*),<br/>nomCat VARCHAR2 (*),<br/>referenceProd VARCHAR2 (*),<br/>libelle VARCHAR2 (*),<br/>dateProduit DATE,<br/>
+                PRIMARY KEY(root_id ) );
                 <br/><br/>

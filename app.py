@@ -4,6 +4,7 @@ from lxml import etree
 import os
 import xmlschema
 from convertor import convertor as conv
+from main import conertionTotal as convtotal
 
 app = Flask(__name__)
 
@@ -30,12 +31,17 @@ def convertor():
         return render_template('convertor.html')
     else :
         try:
-            xsdFile = request.files['xsdFile']
-            xsdFile.save(os.path.join("static/convertion/xsdfiles", "xsdFile.xsd"))
-            if conv("static\\convertion\\xsdfiles\\xsdFile.xsd"):
-                return jsonify(result = True)
+            xsdFile = request.files.get('xsdFile', None)
+            xmlFile = request.files.get('xmlFile', None)
+            xsdFile.save(os.path.join("static/convertion/project", "xsdFile.xsd"))
+            if xmlFile is None:
+                res = conv("static\\convertion\\project\\xsdFile.xsd")
+
             else:
-                return jsonify(result = False)
+                xmlFile.save(os.path.join("static/convertion/project", "xmlFile.xml"))
+                res = convtotal()
+
+            return jsonify(result = res)
         except Exception as e:
             return jsonify(result = False)
 

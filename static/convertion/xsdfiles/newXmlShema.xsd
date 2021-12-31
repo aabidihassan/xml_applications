@@ -1,27 +1,91 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <element name='RegistreEmploye'>
-        <complexType>
-            <sequence>
-                <element name="Employe" type="EmployeType" minOccurs="1" maxOccurs="unbounded"></element>
-            </sequence>
-        </complexType>
-    </element>
-
-    <complexType name="EmployeType">
-        <all>
-            <element name="nom" type="string"></element>
-            <element name="position" type="string"></element>
-            <element name="salaire">
-                <simpleType>
-                    <restriction base="decimal">
-                        <fractionDigits value="2"/>
-                        <minExclusive value="0"/>
-                    </restriction>
-                </simpleType>
-            </element>
-        </all>
+<element name="root">
+    <complexType>
+        <choice minOccurs="0" maxOccurs="unbounded">
+            <element name="Admin" type="Admin"></element>
+            <element name="Client" type="Client"></element>
+            <element name="Gestionnaire" type="Gestionnaire"></element>
+            <element name="Commande" type="Commande"></element>
+            <element name="Categorie" type="Categorie"></element>
+        </choice>
     </complexType>
+</element>
+
+<!-- Defenition de classe Categorie-->
+<complexType name="Categorie">
+    <sequence>
+        <element name="referenceCat" type="string"></element>
+        <element name="nomCat" type="string"></element>
+        <sequence minOccurs="1" maxOccurs="unbounded">
+            <element name="Produit" type="Produit"></element>
+        </sequence>
+    </sequence>
+</complexType>
+
+<!-- Defenition de classe Produit-->
+<complexType name="Produit">
+    <sequence>
+        <element name="referenceProd" type="string"></element>
+        <element name="libelle" type="string"></element>
+        <element name="dateProduit" type="date"></element>
+        <element name="prix" type="double"></element>
+    </sequence>
+</complexType>
+
+<!-- Defenition de classe Commande-->
+<complexType name="Commande">
+    <sequence>
+        <element name="referenceCmd" type="string"></element>
+        <element name="dateCmd" type="date"></element>
+        <sequence minOccurs="1" maxOccurs="unbounded">
+            <element name="referenceProd" type="string"></element>
+        </sequence>
+    </sequence>
+</complexType>
+
+<!-- Defenition de classe Personne-->
+<complexType name="Personne" abstract="true">
+    <sequence>
+        <element name="email" type="string"></element>
+        <element name="motDePasse" type="string"></element>
+        <element name="dateNaissance" type="date"></element>
+        <element name="telephone" type="string"></element>
+        <element name="ville" type="string"></element>
+    </sequence>
+</complexType>
+
+<!-- Defenition de classe Client-->
+<complexType name="Client">
+    <complexContent>
+        <extension base="Personne">
+            <sequence>
+                <element name="idClient" type="string"></element>
+            </sequence>
+        </extension>
+    </complexContent>
+</complexType>
+
+<!-- Defenition de classe Gestionnaire-->
+<complexType name="Gestionnaire">
+    <complexContent>
+        <extension base="Personne">
+            <sequence>
+                <element name="idGestionnaire" type="string"></element>
+            </sequence>
+        </extension>
+    </complexContent>
+</complexType>
+
+<!-- Defenition de classe Admin-->
+<complexType name="Admin">
+    <complexContent>
+        <extension base="Personne">
+            <sequence>
+                <element name="idAdmin" type="string"></element>
+            </sequence>
+        </extension>
+    </complexContent>
+</complexType>
 
 </schema>

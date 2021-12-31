@@ -34,7 +34,6 @@ def convertor(xmlShemaFile):
             ScriptFile = open("static/convertion/sql/result.sql", 'w')
             ScriptFile.write(soup.get_text())
             ScriptFile.close()
-        return True
+        return "xsd"
     except Exception as e:
         return False
-

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<XMLSchema>
+<complexType name="collection">
+<element name="id" type="String"/>
+<element name="num" type="Integer"/>
+<element name="name" type="String"/>
+<element name="title" type="String"/>
+<element name="publishing_Date" type="Date"/>
+<element name="remote" type="String"/>
+<element name="features" type="String"/>
+<element name="purpose" type="String"/>
+<element name="description" type="String"/>
+<element name="url" type="String"/>
+<element name="exh_exh_id" type="Integer"/>
+<element name="inst_inst_id" type="Integer"/>
+<element name="staf_staf_id" type="String"/>
+</complexType>
+<complexType name="Object">
+<element name="number" type="String"/>
+<element name="name" type="String"/>
+<element name="Title" type="String"/>
+<element name="registration_Date" type="Date"/>
+<element name="description" type="String"/>
+<element name="staf_staf_id" type="Integer"/>
+<element name="cllctr_cllctr_id" type="Integer"/>
+<element name="inst_inst_id" type="Integer"/>
+</complexType>
+<complexType name="ObjectInformation">
+<element name="info_id" type="integer"/>
+<element name="description_date" type="Date"/>
+<element name="description" type="String"/>
+<element name="obj_obj_id" type="integer"/>
+<element name="Inst_Inst_id" type="integer"/>
+<element name="cllctr_cllctr_id" type="integer"/>
+<element name="staf_staf_id" type="integer"/>
+<element name="ext_ext_id" type="integer"/>
+<element name="exp_exp_id" type="integer"/>
+</complexType>
+<complexType name="Exhibition">
+<element name="exh_id" type="String"/>
+<element name="title" type="String"/>
+<element name="opning_date" type="Date"/>
+<element name="describtion" type="Text"/>
+<element name="opened" type ="String"/>
+<element name="cur_cur_id" type="String"/>
+<element name="inst_inst_id" type="String"/>
+</complexType>
+<complexType name="Institution">
+<element name="id" type="Integer"/>
+<element name="name" type="String"/>
+<element name="type" type="String"/>
+<element name="country" type="country"/>
+<element name="description" type="String"/>
+<element name="url" type="String"/>
+</complexType>
+</XMLSchema>
